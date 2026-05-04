@@ -1,0 +1,18 @@
+### var/main.yaml
+apache_service: httpd
+mysql_service: mysqld
+
+web_path: /var/www/html
+
+services:
+  - httpd
+  - mysqld
+
+mysql_packages:
+  - mysql-server
+  - mysql
+
+php_packages:
+  - php
+  - php-mysqlnd
+  - php-cli

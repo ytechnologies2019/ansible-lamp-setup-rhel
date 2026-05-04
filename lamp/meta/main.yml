@@ -1,0 +1,28 @@
+galaxy_info:
+  role_name: lamp
+  author: Thiha Thura
+  description: LAMP stack setup for RHEL-based systems.
+  company: "None" # Or your organization name
+
+  # If you didn't include a LICENSE file in your repo root, 
+  # make sure this matches the license you want.
+  license: MIT
+
+  min_ansible_version: "2.9"
+
+  # These help users find your role
+  platforms:
+    - name: EL # Enterprise Linux (RHEL, CentOS, Alma, Rocky)
+      versions:
+        - 8
+        - 9
+
+  galaxy_tags:
+    - lamp
+    - web
+    - rhel
+    - php
+    - mariadb
+    - apache
+
+dependencies: []

@@ -1,0 +1,7 @@
+---
+- name: Update web servers
+  hosts: localhost
+  become: yes
+
+  roles:
+    - lamp

@@ -1,0 +1,36 @@
+---
+# tasks file for lamp
+---
+- name: Ensure Apache is at the latest version
+  ansible.builtin.yum:
+    name: "{{ apache_service }}"
+  notify: Restart Apache
+
+- name: Install MySQL packages
+  ansible.builtin.yum:
+    name: "{{ mysql_packages  }}"
+  notify: Restart MySQL 
+
+- name: Install PHP packages
+  ansible.builtin.yum:
+    name: "{{ php_packages }}"
+  notify: Restart Apache  ##For PHP and Apache Relationship.
+
+- name: Deploy index.html
+  ansible.builtin.copy:
+    src: index.html
+    dest: "{{ web_path }}/index.html"
+  ignore_errors: true
+
+- name: Deploy test.php
+  ansible.builtin.copy:
+    src: test.php
+    dest: "{{ web_path }}/test.php"
+  ignore_errors: true
+  
+- name: Ensure services are started and enabled
+  ansible.builtin.service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  loop: "{{ services }}"
